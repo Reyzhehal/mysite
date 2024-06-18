@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/src/favicon.png" sizes="384x384">
-    <title>Ruslan Djamakeev</title>
+    <title data-translate="title">Руслан Джамакеев</title>
     <style>
         body {
             background-color: #282C34;
@@ -43,6 +43,7 @@
         .content {
             width: 100%;
             height: 100%;
+            margin-top: 4%;
         }
 
         .image_container {
@@ -87,10 +88,6 @@
 
         .my_photo_container:hover::after {
             opacity: 1;
-        }
-
-        .content {
-            margin-top: 6%;
         }
 
         .content section:last-of-type {
@@ -148,13 +145,22 @@
             height: 3em;
         }
 
+        .portfolio_text {
+            padding-left: 2em;
+
+        }
+
         .portfolio_text a {
             color: #0077cc;
             text-decoration: none;
         }
 
-        .portfolio_text {
-            padding-left: 2em;
+        .portfolio_text div {
+            display: flex;
+        }
+
+        .portfolio_text div a {
+            margin: 1em 0.5em 1em 0;
         }
 
         .spacer {
@@ -171,15 +177,85 @@
         .thanks a {
             text-decoration: none;
             color: #7741ff;
+            padding-left: 0.2em;
+        }
+
+        .switch_language_wrapper {
+            display: flex;
+            justify-content: flex-end;
+            padding: 0.7em;
+
+        }
+
+        .switch_language {
+            position: relative;
+            width: 80px;
+            /* height: 20px; */
+            background-color: #47605d;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px;
+        }
+
+        .button {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #3d4658;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            z-index: 2;
+            font-size: 0.8em;
+            text-align: center;
+        }
+
+        .button div {
+            padding: 0.2em 0;
+        }
+
+        .active {
+            background-color: green;
+        }
+
+        .circle {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #1f1f88;
+            transition: left 0.3s ease;
+            z-index: 1;
         }
 
         @media (max-width: 1200px) {
 
             .content {
-                margin-top: 11%;
+                margin-top: 7%;
             }
 
         }
+
+        /* @media (max-width: 800px) {
+
+            .content {
+                margin-top: 9%;
+            }
+
+            .switch_language {
+                position: relative;
+                width: 20px;
+                border-radius: 80px;
+                overflow: hidden;
+                padding: 5px;
+                display: block;
+            }
+
+        } */
 
         @media (max-width: 600px) {
 
@@ -232,12 +308,27 @@
 
 <body>
     <nav>
-        <a href="#about_me">О себе</a>
-        <a href="#skills">Навыки</a>
-        <a href="#portfolio">Портфолио</a>
-        <a href="#contacts">Контакты</a>
+        <a data-translate="about_me" href="#about_me">О себе</a>
+        <a data-translate="skills" href="#skills">Навыки</a>
+        <a data-translate="portfolio" href="#portfolio">Портфолио</a>
+        <a data-translate="contacts" href="#contacts">Контакты</a>
     </nav>
     <div class="content">
+        <div class="switch_language_wrapper">
+            <div class="switch_language">
+                <div class="circle"></div>
+                <div class="button active" onclick="moveCircle(this)">
+                    <div>РУ</div>
+                </div>
+                <div class="button" onclick="moveCircle(this)">
+                    <div>EN</div>
+                </div>
+                <div class="button" onclick="moveCircle(this)">
+                    <div>DE</div>
+                </div>
+            </div>
+
+        </div>
         <section id="about_me">
             <div class="my_photo_container">
                 <img src="src/my_damaged_photo.png" alt="Изображение недоступно.">
@@ -245,12 +336,12 @@
             <div class="section_text_container">
                 <div class="spacer"></div>
                 <div class="center_text">
-                    <h2>Немного о себе</h2>
-                    <p>Живу в городе Бишкек, Киргизия.</p>
-                    <p>Занимаюсь профессиональным программированием на языке Python.</p>
-                    <p>Люблю в качестве развлечения программировать на C и Rust.</p>
-                    <p>Слушаю в основном рок, метал, мэйдкор и хардкор.</p>
-                    <p>Из спорта предпочитаю упражнения на турнике и легкую атлетику.</p>
+                    <h2 data-translate="about_me_0">Немного о себе</h2>
+                    <p data-translate="about_me_1">Живу в городе Бишкек, Киргизия.</p>
+                    <p data-translate="about_me_2">Занимаюсь профессиональным программированием на языке Python.</p>
+                    <p data-translate="about_me_3">Люблю в качестве развлечения программировать на C и Rust.</p>
+                    <!-- <p data-translate="about_me_4">Слушаю в основном рок, метал, мэйдкор и хардкор.</p>
+                    <p data-translate="about_me_5">Из спорта предпочитаю упражнения на турнике и легкую атлетику.</p> -->
                 </div>
                 <div class="spacer"></div>
             </div>
@@ -259,20 +350,26 @@
         <section id="skills">
             <div class="section_text_container">
                 <div class="center_text">
-                    <h2>Что я умею</h2>
-                    <p>Программирую на Python с 2020 года, считаю себя разработчиком Middle уровня.</p>
-                    <p>До Python программировал на VBS и C.</p>
-                    <p>В основном пишу бэкенд сайтов на Django REST, FastApi, Flask. Но могу и в нехитрый фронтенд.</p>
-                    <p>Периодически практикую создание парсеров сайтов на Selenium, PlayWright.</p>
-                    <p>Хорошо дружу с Linux/Unix системами. Без терминала я как без рук.</p>
+                    <h2 data-translate="skills_text_0">Что я умею</h2>
+                    <p data-translate="skills_text_1">Программирую на Python с 2020 года, считаю себя разработчиком
+                        Middle уровня.</p>
+                    <p data-translate="skills_text_2">До Python программировал на VBS и C.</p>
+                    <p data-translate="skills_text_3">В основном пишу бэкенд сайтов на Django REST, FastApi, Flask. Но
+                        могу и в нехитрый фронтенд.</p>
+                    <p data-translate="skills_text_4">Периодически практикую создание парсеров сайтов на Selenium,
+                        PlayWright.</p>
+                    <p data-translate="skills_text_5">Хорошо дружу с Linux/Unix системами. Без терминала я как без рук.
+                    </p>
                 </div>
                 <div>
-                    <p>Мой стек:</p>
-                    <p> Backend: Python3, Django, Django REST Framework, PostrgesQL, Redis, Docker, aiogram, websockets.
+                    <p data-translate="skills_0">Мой стек:</p>
+                    <p data-translate="skills_1"> Backend: Python3, Django, Django REST Framework, PostrgesQL, Redis,
+                        Docker, aiogram, websockets.
                     </p>
-                    <p> Scraping: Selenium, PlayWright, requests, urllib3, BS4, lxml.</p>
-                    <p> Frontend: JavaScript, CSS, SASS, HTML, AJAX, jQuery, Bootstrap.</p>
-                    <p> Linux/Системное администрирование: bash, ssh, ftp, nginx, gunicorn, uwsgi.</p>
+                    <p data-translate="skills_2"> Scraping: Selenium, PlayWright, requests, urllib3, BS4, lxml.</p>
+                    <p data-translate="skills_3"> Frontend: JavaScript, CSS, SASS, HTML, AJAX, jQuery, Bootstrap.</p>
+                    <p data-translate="skills_4"> Linux/Системное администрирование: bash, ssh, ftp, nginx, gunicorn,
+                        uwsgi.</p>
                 </div>
             </div>
             <div class="image_container">
@@ -286,29 +383,37 @@
             </div>
             <div class="section_text_container">
                 <div class="center_text">
-                    <h2>Примеры прошлых работ</h2>
+                    <h2 data-translate="portfolio_0">Примеры прошлых работ</h2>
                 </div>
                 <div class="portfolio_text">
-                    <p>
-                        <a href="https://ekrem.ru/" target="_blank">EKREM</a> - мой самый масштабный проект. 14 месяцев
-                        разработки. 4000
-                        коммитов и более 100 тысяч строк кода.
-                    </p>
-                    <p>
-                        <a href="https://github.com/Reyzhehal/buildinteresting" target="_blank">buildinteresting</a> -
-                        небольшой сайт со
-                        статьями на строительную тематику.
-                    </p>
-                    <p>
+                    <div>
+                        <a href="https://ekrem.ru/" target="_blank">EKREM</a>
+                        <p data-translate="portfolio_1"> - мой самый масштабный проект. 14 месяцев разработки. 4000
+                            коммитов и более 100 тысяч строк кода.</p>
+                    </div>
+                    <div><a href="https://github.com/Reyzhehal/buildinteresting" target="_blank">buildinteresting</a>
+                        <p data-translate="portfolio_2">
+                            -
+                            небольшой сайт со статьями на строительную тематику.
+                        </p>
+                    </div>
+                    <div>
                         <a href="https://github.com/Reyzhehal/pprogramistbot" target="_blank">P-Programist Telegram
-                            bot</a> - Телеграм-бот для небольшой локальной компании.
-                    </p>
-                    <p>
-                        <a href="https://github.com/Reyzhehal/Fyiona" target="_blank">Fyiona</a> - Небольшой сайт на DRF
-                        для интернет-магазина иностраного заказчика.
-                    </p>
-                    <p>Это только малая часть моих проектов. Из-за договоров о неразглашении кода я не могу показать
-                        больше.</p>
+                            bot</a>
+                        <p data-translate="portfolio_3">
+                            - Телеграм-бот для небольшой локальной компании.
+                        </p>
+                    </div>
+                    <div><a href="https://github.com/Reyzhehal/Fyiona" target="_blank">Fyiona</a>
+                        <p data-translate="portfolio_4">
+                            - небольшой сайт на DRF
+                            для интернет-магазина иностраного заказчика.
+                        </p>
+                    </div>
+
+                    <!-- <div></div> -->
+                    <p data-translate="portfolio_5">Это только малая часть моих проектов. Из-за договоров о
+                        неразглашении кода я не могу показать больше.</p>
                 </div>
             </div>
         </section>
@@ -316,23 +421,23 @@
         <section id="contacts">
             <div class="contacts_container">
                 <div class="center_text">
-                    <h2>Как со мной связаться?</h2>
+                    <h2 data-translate="contacts_0">Как со мной связаться?</h2>
                 </div>
                 <ul class="contacts_list">
                     <li>
                         <figure>
-                            <a href="https://t.me/ein_flammenungeheuer" target="_blank">
+                            <a href="https://t.me/flammenungeheuer" target="_blank">
                                 <img src="src/telegram_icon.png" alt="Изображение недоступно.">
                             </a>
-                            <figcaption>Телеграм: @ein_flammenungeheuer</figcaption>
+                            <figcaption data-translate="contacts_1">Телеграм: @flammenungeheuer</figcaption>
                         </figure>
                     </li>
                     <li>
                         <figure>
-                            <a href="mailto:reyzhehal@gmail.com" target="_blank">
+                            <a href="mailto:ruslandjamakeev@gmail.com" target="_blank">
                                 <img src="src/email_icon.png" alt="Изображение недоступно.">
                             </a>
-                            <figcaption>Почта: reyzhehal@gmail.com</figcaption>
+                            <figcaption data-translate="contacts_2">Почта: ruslandjamakeev@gmail.com</figcaption>
                         </figure>
                     </li>
                     <li>
@@ -340,7 +445,7 @@
                             <a href="https://github.com/Reyzhehal" target="_blank">
                                 <img src="src/github_icon.png" alt="Изображение недоступно.">
                             </a>
-                            <figcaption>Гитхаб: Reyzhehal</figcaption>
+                            <figcaption data-translate="contacts_3">Гитхаб: Reyzhehal</figcaption>
                         </figure>
                     </li>
                     <li>
@@ -348,7 +453,7 @@
                             <a href="tel:+996551578303" target="_blank">
                                 <img src="src/phone_icon.svg" alt="Изображение недоступно.">
                             </a>
-                            <figcaption>Телефон: +996551578303</figcaption>
+                            <figcaption data-translate="contacts_4">Телефон: +996551578303</figcaption>
                         </figure>
                     </li>
                     <li>
@@ -356,7 +461,7 @@
                             <a href="https://freelance.habr.com/freelancers/reyzhehal" target="_blank">
                                 <img src="src/laptop_icon.png" alt="Изображение недоступно.">
                             </a>
-                            <figcaption>Хабр Фриланс: Руслан Д.</figcaption>
+                            <figcaption data-translate="contacts_5">Хабр Фриланс: Руслан Д.</figcaption>
                         </figure>
                     </li>
                 </ul>
@@ -369,11 +474,145 @@
         </section>
     </div>
     <div class="thanks">
-        <div>
-            Отдельная благодарность моему другу и наставнику <a href="https://github.com/P-Programist" target="_blank">Косте</a>
+        <div data-translate="thanks">
+            Отдельная благодарность моему другу и наставнику
         </div>
+        <a data-translate="thanks_kostya" href="https://github.com/P-Programist" target="_blank"> Косте</a>
     </div>
+    <script>
+        function moveCircle(button) {
+            const buttons = document.querySelectorAll(".button");
+            const circle = document.querySelector(".circle");
+            circle.style.left = button.offsetLeft + "px";
+            // circle.style.top = button.offsetTop + "px";
+            // console.log(button.offsetLeft, button.offsetTop);
+            // console.log(button.offsetLeft, button.offsetTop);
+            buttons.forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
 
+            const language = button.textContent.trim();;
+            setLanguage(language);
+        }
+
+        const translations = {
+            "РУ": {
+                title: "Руслан Джамакеев",
+                about_me: "О себе",
+                skills: "Навыки",
+                portfolio: "Портфолио",
+                contacts: "Контакты",
+                about_me_0: "Немного о себе",
+                about_me_1: "Живу в городе Бишкек, Киргизия.",
+                about_me_2: "Занимаюсь профессиональным программированием на языке Python.",
+                about_me_3: "Люблю в качестве развлечения программировать на C и Rust.",
+                skills_text_0: "Что я умею",
+                skills_text_1: "Программирую на Python с 2020 года, считаю себя разработчиком Middle уровня.",
+                skills_text_2: "До Python программировал на VBS и C.",
+                skills_text_3: "В основном пишу бэкенд сайтов на Django REST, FastApi, Flask. Но могу и в нехитрый фронтенд.",
+                skills_text_4: "Периодически практикую создание парсеров сайтов на Selenium, PlayWright.",
+                skills_text_5: "Хорошо дружу с Linux/Unix системами. Без терминала я как без рук.",
+                skills_0: "Мой стек:",
+                skills_1: " Backend: Python3, Django, Django REST Framework, PostrgesQL, Redis, Docker, aiogram, websockets.",
+                skills_2: " Scraping: Selenium, PlayWright, requests, urllib3, BS4, lxml.",
+                skills_3: " Frontend: JavaScript, CSS, SASS, HTML, AJAX, jQuery, Bootstrap.",
+                skills_4: " Linux/Системное администрирование: bash, ssh, ftp, nginx, gunicorn, uwsgi.",
+                portfolio_0: "Примеры прошлых работ",
+                portfolio_1: " - мой самый масштабный проект. 14 месяцев разработки. 4000 коммитов и более 100 тысяч строк кода.",
+                portfolio_2: " - небольшой сайт со статьями на строительную тематику.",
+                portfolio_3: " - Телеграм-бот для небольшой локальной компании.",
+                portfolio_4: " - небольшой сайт на DRF для интернет-магазина иностраного заказчика.",
+                portfolio_5: "Это только малая часть моих проектов. Из-за договоров о неразглашении кода я не могу показать больше.",
+                contacts_0: "Как со мной связаться?",
+                contacts_1: "Телеграм: @ein_flammenungeheuer",
+                contacts_2: "Почта: ruslandjamakeev@gmail.com",
+                contacts_3: "Гитхаб: Reyzhehal",
+                contacts_4: "Телефон: +996551578303",
+                contacts_5: "Хабр Фриланс: Руслан Д.",
+                thanks: "Отдельная благодарность моему другу и наставнику",
+                thanks_kostya: "Косте",
+            },
+            "EN": {
+                "title": "Ruslan Djamakeev",
+                "about_me": "About me",
+                "skills": "Skills",
+                "portfolio": "Portfolio",
+                "contacts": "Contacts",
+                "about_me_0": "A few details about myself",
+                "about_me_1": "I live in Bishkek, Kyrgyzstan.",
+                "about_me_2": "I am a professional Python programmer.",
+                "about_me_3": "I enjoy programming in C and Rust as a hobby.",
+                "skills_text_0": "What I can do",
+                "skills_text_1": "I have been programming in Python since 2020 and consider myself a middle-level developer.",
+                "skills_text_2": "Before Python, I programmed in VBS and C.",
+                "skills_text_3": "Primarily, I write backend for websites using Django REST, FastAPI, and Flask, but I can handle simple frontend tasks as well.",
+                "skills_text_4": "I periodically practice creating web scrapers using Selenium and PlayWright.",
+                "skills_text_5": "I am very comfortable with Linux/Unix systems. Without a terminal, I feel lost.",
+                "skills_0": "My stack:",
+                "skills_1": " Backend: Python3, Django, Django REST Framework, PostgreSQL, Redis, Docker, aiogram, websockets.",
+                "skills_2": " Scraping: Selenium, PlayWright, requests, urllib3, BS4, lxml.",
+                "skills_3": " Frontend: JavaScript, CSS, SASS, HTML, AJAX, jQuery, Bootstrap.",
+                "skills_4": " Linux/System Administration: bash, ssh, ftp, nginx, gunicorn, uwsgi.",
+                "portfolio_0": "Past project examples",
+                "portfolio_1": " - my most extensive project. 14 months of development. 4000 commits and over 100 thousand lines of code.",
+                "portfolio_2": " - a small website with articles on construction topics.",
+                "portfolio_3": " - a Telegram bot for a small local company.",
+                "portfolio_4": " - a small DRF-based website for an international client's online store.",
+                "portfolio_5": "This is just a small part of my projects. Due to non-disclosure agreements, I cannot show more.",
+                "contacts_0": "How to contact me?",
+                "contacts_1": "Telegram: @ein_flammenungeheuer",
+                "contacts_2": "Email: ruslandjamakeev@gmail.com",
+                "contacts_3": "GitHub: Reyzhehal",
+                "contacts_4": "Phone: +996551578303",
+                "contacts_5": "Habr Freelance: Ruslan D.",
+                "thanks": "Special thanks to my friend and mentor",
+                "thanks_kostya": "Kostya",
+            },
+            "DE": {
+                "title": "Ruslan Djamakeev",
+                "about_me": "Über mich",
+                "skills": "Fähigkeiten",
+                "portfolio": "Portfolio",
+                "contacts": "Kontakte",
+                "about_me_0": "Ein paar Details über mich",
+                "about_me_1": "Ich lebe in Bischkek, Kirgisistan.",
+                "about_me_2": "Ich bin ein professioneller Python-Programmierer.",
+                "about_me_3": "Als Hobby programmiere ich gerne in C und Rust.",
+                "skills_text_0": "Was ich kann",
+                "skills_text_1": "Ich programmiere seit 2020 in Python und betrachte mich als Entwickler auf mittlerem Niveau.",
+                "skills_text_2": "Vor Python habe ich in VBS und C programmiert.",
+                "skills_text_3": "Hauptsächlich schreibe ich Backend für Websites mit Django REST, FastAPI und Flask, aber ich kann auch einfache Frontend-Aufgaben übernehmen.",
+                "skills_text_4": "Ich übe regelmäßig das Erstellen von Web-Scrapern mit Selenium und PlayWright.",
+                "skills_text_5": "Ich fühle mich sehr wohl mit Linux/Unix-Systemen. Ohne Terminal bin ich wie ohne Hände.",
+                "skills_0": "Mein Stack:",
+                "skills_1": " Backend: Python3, Django, Django REST Framework, PostgreSQL, Redis, Docker, aiogram, Websockets.",
+                "skills_2": " Scraping: Selenium, PlayWright, requests, urllib3, BS4, lxml.",
+                "skills_3": " Frontend: JavaScript, CSS, SASS, HTML, AJAX, jQuery, Bootstrap.",
+                "skills_4": " Linux/Systemadministration: bash, ssh, ftp, nginx, gunicorn, uwsgi.",
+                "portfolio_0": "Beispiele vergangener Projekte",
+                "portfolio_1": " - mein umfangreichstes Projekt. 14 Monate Entwicklung. 4000 Commits und über 100.000 Zeilen Code.",
+                "portfolio_2": " - eine kleine Website mit Artikeln zu Bauthemen.",
+                "portfolio_3": " - ein Telegram-Bot für ein kleines lokales Unternehmen.",
+                "portfolio_4": " - eine kleine DRF-basierte Website für den Online-Shop eines internationalen Kunden.",
+                "portfolio_5": "Dies ist nur ein kleiner Teil meiner Projekte. Aufgrund von Geheimhaltungsvereinbarungen kann ich nicht mehr zeigen.",
+                "contacts_0": "Wie kann man mich kontaktieren?",
+                "contacts_1": "Telegram: @ein_flammenungeheuer",
+                "contacts_2": "E-Mail: ruslandjamakeev@gmail.com",
+                "contacts_3": "GitHub: Reyzhehal",
+                "contacts_4": "Telefon: +996551578303",
+                "contacts_5": "Habr Freelance: Ruslan D.",
+                "thanks": "Besonderer Dank an meinen Freund und Mentor",
+                "thanks_kostya": "Kostya",
+            }
+        };
+
+        function setLanguage(lang) {
+            const elements = document.querySelectorAll("[data-translate]");
+            elements.forEach(element => {
+                const key = element.getAttribute("data-translate");
+                element.textContent = translations[lang][key];
+            });
+        }
+    </script>
 </body>
 
 </html>
